@@ -33,15 +33,24 @@
         },100);
     }
     
+    const handleKey = (e) => {
+        if (e.key == "r") {
+            restart()
+        }
+    }
+
     const restart = () => {
-        gameOver = false;
-        score = 0;
-        snake.reset();
-        start();
+        if (gameOver) {
+            gameOver = false;
+            score = 0;
+            snake.reset();
+            start();
+        }
     };
     start();
 </script>
 
+<svelte:window on:keydown={handleKey} />
 <main>
     <div class="title">
         <h1>Snake Game w/ svelte</h1>
